@@ -1,0 +1,28 @@
+select count(distinct PULocationID) from omega-byte-447718-e2.zoomcamp.Yellow_Taxi_2024
+
+select count(distinct PULocationID) from omega-byte-447718-e2.zoomcamp.Yellow_Taxi_2024_MAT
+
+select  PULocationID from omega-byte-447718-e2.zoomcamp.Yellow_Taxi_2024_MAT
+
+select  PULocationID,DOLocationID from omega-byte-447718-e2.zoomcamp.Yellow_Taxi_2024_MAT
+
+
+select count(*) from omega-byte-447718-e2.zoomcamp.Yellow_Taxi_2024_MAT
+where fare_amount = 0
+
+create or replace table omega-byte-447718-e2.zoomcamp.Yellow_Taxi_2024_MAT_part_clus
+partition by DATE(tpep_dropoff_datetime)
+cluster by VendorID
+As
+select * from omega-byte-447718-e2.zoomcamp.Yellow_Taxi_2024_MAT
+
+
+
+select distinct VendorID from omega-byte-447718-e2.zoomcamp.Yellow_Taxi_2024_MAT
+
+where DATE(tpep_dropoff_datetime) between '2024-03-01' and '2024-03-15'
+
+
+select distinct VendorID from omega-byte-447718-e2.zoomcamp.Yellow_Taxi_2024_MAT_part_clus
+
+where DATE(tpep_dropoff_datetime) between '2024-03-01' and '2024-03-15'
